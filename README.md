@@ -26,9 +26,11 @@ docker run \
   jwigley/smokeping-speedtest
 ```
 
-Add speedtest configuration to Probes and Targets config files as per the instructions at https://github.com/mad-ady/smokeping-speedtest.
+The default speedtest configuration will poll downloads/uploads every hour to your closest speedtest.net server.
+Results are displayed under the 'Speed Tests' menu in Smokeping.
+This can be modified by via the Probes and Targets config files as per the instructions at https://github.com/mad-ady/smokeping-speedtest.
 
-## Credits
+## credits
 
 This docker image just pieces the bits together. The real work is all done by:
   - [mad-ady](https://github.com/mad-ady)'s [smokeping-speedtest](https://github.com/mad-ady/smokeping-speedtest)

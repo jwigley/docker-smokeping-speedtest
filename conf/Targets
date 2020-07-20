@@ -1,0 +1,20 @@
+
++ SpeedTest
+menu = Speed Tests
+title = Speed Tests
+
+++ Download
+menu = Download
+title = Download
+probe = speedtest-download
+measurement = download
+host = dummy.com
+#server = 1737
+
+++ Upload
+menu = Upload
+title = Upload
+probe = speedtest-upload
+measurement = upload
+host = dummy.com
+#server = 1737
