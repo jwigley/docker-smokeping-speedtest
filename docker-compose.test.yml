@@ -1,6 +1,6 @@
 sut:
   build: .
-  command: "ls -lah /test"
+  command: ls -lah
   entrypoint: ["/bin/sh", "-c"]
   working_dir: /test
   volumes:
