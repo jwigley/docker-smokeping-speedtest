@@ -1,6 +1,6 @@
 sut:
   build: .
-  command: /test/tests.sh
+  command: ls -lah /test && /test/tests.sh
   entrypoint: ["/bin/sh", "-c"]
   volumes:
     - $PWD/test:/test
