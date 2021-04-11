@@ -1,4 +1,4 @@
-FROM linuxserver/smokeping:latest
+FROM linuxserver/smokeping:latest as release
 
 # Copy in default speedtest probe/target config
 COPY conf / /speedtest-conf/
@@ -11,3 +11,13 @@ RUN apk add python3 --no-cache \
     && chmod a+x /usr/local/bin/speedtest-cli \
     && cat /speedtest-conf/Probes >> /defaults/smoke-conf/Probes \
     && cat /speedtest-conf/Targets >> /defaults/smoke-conf/Targets
+
+# Build image with tests
+FROM alpine:latest as test
+COPY --from=release / /
+COPY test/ /test
+WORKDIR /test
+ENTRYPOINT ["/bin/sh", "-c"]
+CMD ["./tests.sh"]
+
+FROM release
