@@ -1,6 +1,7 @@
 sut:
   build: .
-  command: ./test/tests.sh
+  command: tests.sh
   entrypoint: ["/bin/sh", "-c"]
+  working_dir: /test
   volumes:
     - $PWD/test:/test
