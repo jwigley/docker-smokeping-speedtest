@@ -1,7 +1,9 @@
-sut:
-  build: .
-  command: ls -lah
-  entrypoint: ["/bin/sh", "-c"]
-  working_dir: /test
-  volumes:
-    - $PWD/test:/test
+version: "3.8"
+services:
+  sut:
+    build: .
+    command: ./tests.sh
+    entrypoint: ["/bin/sh", "-c"]
+    working_dir: /test
+    volumes:
+      - $PWD/test:/test
