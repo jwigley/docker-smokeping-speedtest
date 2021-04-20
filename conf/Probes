@@ -11,3 +11,18 @@ measurement = download
 
 ++ speedtest-upload
 measurement = upload
+
++ speedtestcli
+binary = /usr/local/bin/speedtest
+timeout = 300
+forks = 1
+step = 3600
+offset = random
+pings = 3
+
+++ speedtestcli-download
+measurement = download
+
+++ speedtestcli-upload
+measurement = upload
+
