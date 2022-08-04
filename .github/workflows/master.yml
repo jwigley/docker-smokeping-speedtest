@@ -4,7 +4,9 @@ name: Master
 on:
   # run on any pushes to master branch
   push:
-    branches: master
+    branches:
+      - master
+      - main
 
 jobs:
   docker:

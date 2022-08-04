@@ -3,7 +3,9 @@ name: Pull Requests
 # Build and run tests on all pull requests
 on:
   pull_request:
-    branches: main
+    branches:
+      - master
+      - main
 
 jobs:
   docker:
