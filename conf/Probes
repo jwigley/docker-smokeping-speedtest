@@ -1,3 +1,4 @@
+
 + speedtest
 binary = /usr/local/bin/speedtest-cli
 timeout = 300
@@ -5,6 +6,7 @@ forks = 1
 step = 3600
 offset = random
 pings = 3
+extraargs = --secure
 
 ++ speedtest-download
 measurement = download
