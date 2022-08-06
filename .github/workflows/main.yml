@@ -1,11 +1,10 @@
-name: Master
+name: Main
 
 # Build, run tests and push to docker hub
 on:
-  # run on any pushes to master branch
+  # run on any pushes to main branch
   push:
     branches:
-      - master
       - main
 
 jobs:

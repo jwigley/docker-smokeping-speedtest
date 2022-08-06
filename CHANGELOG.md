@@ -1,5 +1,11 @@
 # Changelog
 
+## 2022-08-07
+### Added
+- --secure arg to speedtest-cli ([@SuperJC710e](https://github.com/SuperJC710e))
+### Changed
+- automatically determine python3 location ([@SuperJC710e](https://github.com/SuperJC710e))
+
 ## 2021-06-13
 ### Added
 - use github workflows for builds
