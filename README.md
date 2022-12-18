@@ -1,6 +1,6 @@
 # docker-smokeping-speedtest
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jwigley/docker-smokeping-speedtest/Master?label=build%20%28master%29)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jwigley/docker-smokeping-speedtest/Daily?label=build%20%28nightly%29)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jwigley/docker-smokeping-speedtest/main.yml?branch=main&label=build%20%28main%29)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jwigley/docker-smokeping-speedtest/daily.yml?branch=main&label=build%20%28nightly%29)
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/jwigley/smokeping-speedtest/latest)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jwigley/smokeping-speedtest.svg)](https://hub.docker.com/r/jwigley/smokeping-speedtest/)
 
