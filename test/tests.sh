@@ -24,6 +24,10 @@ check_result ${?} "speedtest-cli can list servers"
 OUTPUT=$(speedtest-cli)
 check_result ${?} "speedtest-cli can execute speed test"
 
+# test 3 - SSH probe compiled successfully
+OUPUT=$(perl -c /usr/share/perl5/vendor_perl/Smokeping/probes/SSH.pm > /dev/null)
+check_result ${?} "ssh probe compiled successfully"
+
 # output results
 echo PASSED: ${PASSED} FAILED: ${FAILED}
 
