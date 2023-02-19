@@ -30,6 +30,28 @@ The default speedtest configuration will poll downloads/uploads every hour to yo
 Results are displayed under the 'Speed Tests' menu in Smokeping.
 This can be modified by via the Probes and Targets config files as per the instructions at https://github.com/mad-ady/smokeping-speedtest.
 
+## ssh probe
+
+This image also contains a working version of the [SSH Probe](https://oss.oetiker.ch/smokeping/probe/SSH.en.html), which is [currently broken](https://github.com/linuxserver/docker-smokeping/issues/142) in the underlying linuxserver image.
+
+If you add an SSH probe to your configuration, you must also set the `SSH_PROBE_INIT_TARGET` environment variable to a valid host running SSH. During initialisation, the probe will ask the target for its public key and verify it can parse the output.
+
+eg.
+```bash
+docker run \
+  -d \
+  --name=smokeping-speedtest \
+  -e SSH_PROBE_INIT_TARGET=my.host \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Europe/London \
+  -p 80:80 \
+  -v /path/to/smokeping/config:/config \
+  -v /path/to/smokeping/data:/data \
+  --restart unless-stopped \
+  jwigley/smokeping-speedtest
+```
+
 ## credits
 
 This docker image just pieces the bits together. The real work is all done by:
