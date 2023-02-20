@@ -6,6 +6,9 @@ on:
     branches:
       - main
 
+env:
+  TEST_IMAGE_TAG: jwigley/smokeping-speedtest:test
+
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -25,7 +28,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Test
+      - name: Build Test
         id: docker_test
         uses: docker/build-push-action@v4
         with:
@@ -33,3 +36,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           target: test
+          tags: ${{ env.TEST_IMAGE_TAG }}
+
+      - name: Run Test
+        run: docker run --rm ${{ env.TEST_IMAGE_TAG }}
