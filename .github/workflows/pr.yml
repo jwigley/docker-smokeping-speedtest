@@ -25,7 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: Test
+      - name: Build Test
         id: docker_test
         uses: docker/build-push-action@v4
         with:
@@ -33,3 +33,10 @@ jobs:
           context: ./
           file: ./Dockerfile
           target: test
+          tags: smokeping-speedtest:test
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache
+
+      - name: Run Test
+        run: docker run --rm smokeping-speedtest:test
