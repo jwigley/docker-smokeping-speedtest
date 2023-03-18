@@ -6,9 +6,11 @@
 
 Smokeping docker image with [smokeping-speedtest](https://github.com/mad-ady/smokeping-speedtest) probe and [speedtest-cli](https://github.com/sivel/speedtest-cli), built upon linuxserver's [docker-smokeping](https://github.com/linuxserver/docker-smokeping) image.
 
-## docker repository
+## docker repositories
 
 [jwigley/smokeping-speedtest](https://hub.docker.com/r/jwigley/smokeping-speedtest)
+
+[jwigley/smokeping-speedtest](https://github.com/jwigley/docker-smokeping-speedtest/pkgs/container/smokeping-speedtest)
 
 ## usage
 
