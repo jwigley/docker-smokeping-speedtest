@@ -25,7 +25,7 @@ OUTPUT=$(speedtest-cli)
 check_result ${?} "speedtest-cli can execute speed test"
 
 # test 3 - SSH probe compiled successfully
-OUPUT=$(perl -c /usr/share/perl5/vendor_perl/Smokeping/probes/SSH.pm > /dev/null)
+OUPUT=$(PERL5LIB=/usr/share/smokeping/ perl -l /usr/share/smokeping/Smokeping/probes/SSH.pm -c /usr/share/smokeping/Smokeping/probes/SSH.pm > /dev/null)
 check_result ${?} "ssh probe compiled successfully"
 
 # output results
