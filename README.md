@@ -8,9 +8,9 @@ Smokeping docker image with [smokeping-speedtest](https://github.com/mad-ady/smo
 
 ## docker repositories
 
-[jwigley/smokeping-speedtest](https://hub.docker.com/r/jwigley/smokeping-speedtest)
+[jwigley/smokeping-speedtest](https://hub.docker.com/r/jwigley/smokeping-speedtest) (docker hub)
 
-[jwigley/smokeping-speedtest](https://github.com/jwigley/docker-smokeping-speedtest/pkgs/container/smokeping-speedtest)
+[ghcr.io/jwigley/smokeping-speedtest](https://github.com/jwigley/docker-smokeping-speedtest/pkgs/container/smokeping-speedtest) (github)
 
 ## usage
 
