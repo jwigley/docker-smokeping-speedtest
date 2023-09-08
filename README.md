@@ -32,6 +32,8 @@ The default speedtest configuration will poll downloads/uploads every hour to yo
 Results are displayed under the 'Speed Tests' menu in Smokeping.
 This can be modified by via the Probes and Targets config files as per the instructions at https://github.com/mad-ady/smokeping-speedtest.
 
+The default configuration runs speedtests with the [Sivel](https://github.com/mad-ady/smokeping-speedtest/tree/master#smokepingprobesspeedtest-sivel) probe. If you'd like to use the offical Ookla speedtest instead, uncomment the Ookla section in your Targets config. The Ookla speedtest cli requires you to accept a license on first use. Alternatively you can add the `--accept-license` flag to the `extraargs` parameter in your Probes config.
+
 ## ssh probe
 
 This image also contains a working version of the [SSH Probe](https://oss.oetiker.ch/smokeping/probe/SSH.en.html), which is [currently broken](https://github.com/linuxserver/docker-smokeping/issues/142) in the underlying linuxserver image.
