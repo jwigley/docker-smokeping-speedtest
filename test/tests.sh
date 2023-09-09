@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# perform basic tests to ensure speedtest-cli works
+# perform basic tests to ensure speedtests work
 #
 echo "Executing tests..."
 
@@ -27,6 +27,14 @@ check_result ${?} "speedtest-cli can execute speed test"
 # test 3 - SSH probe compiled successfully
 OUPUT=$(PERL5LIB=/usr/share/smokeping/ perl -l /usr/share/smokeping/Smokeping/probes/SSH.pm -c /usr/share/smokeping/Smokeping/probes/SSH.pm > /dev/null)
 check_result ${?} "ssh probe compiled successfully"
+
+# test 4 - speedtest (ookla) can list version info
+OUTPUT=$(speedtest --version)
+check_result ${?} "speedtest (ookla) can list version info"
+
+# test 5 - speedtest (ookla) can list servers
+OUTPUT=$(speedtest --servers)
+check_result ${?} "speedtest (ookla) can list servers"
 
 # output results
 echo PASSED: ${PASSED} FAILED: ${FAILED}

@@ -18,3 +18,19 @@ probe = speedtest-upload
 measurement = upload
 host = dummy.com
 #server = 1737
+
+# ++ Download-ookla
+# menu = Download
+# title = Download
+# probe = speedtestcli-download
+# measurement = download
+# host = dummy.com
+# #server = 1737
+
+# ++ Upload-ookla
+# menu = Upload
+# title = Upload
+# probe = speedtestcli-upload
+# measurement = upload
+# host = dummy.com
+# #server = 1737
