@@ -1,4 +1,5 @@
 
+# Sivel
 + speedtest
 binary = /usr/local/bin/speedtest-cli
 timeout = 300
@@ -14,6 +15,7 @@ measurement = download
 ++ speedtest-upload
 measurement = upload
 
+# Ookla official
 + speedtestcli
 binary = /usr/local/bin/speedtest
 timeout = 300
