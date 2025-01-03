@@ -20,8 +20,7 @@ RUN apk add python3 --no-cache \
     && cat /speedtest-conf/Targets >> /defaults/smoke-conf/Targets
 
 # Build image with tests
-FROM alpine:latest AS test
-COPY --from=release / /
+FROM release as test
 COPY test/ /test
 WORKDIR /test
 ENTRYPOINT ["/bin/sh", "-c"]
