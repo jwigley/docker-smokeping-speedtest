@@ -42,6 +42,26 @@ jobs:
       - name: Run Test
         run: docker run --rm smokeping-speedtest:test
 
+      - name: Create Tags
+        id: create-tags
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_TAG_GH: "ghcr.io/${{ github.repository_owner }}/smokeping-speedtest:"
+          BASE_TAG_DOCKER: "${{ secrets.DOCKERHUB_USERNAME }}/smokeping-speedtest:"
+        run: |
+          UPSTREAM_TAGS=$(gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+           /orgs/linuxserver/packages/container/smokeping/versions | jq -r '.[] | select( .metadata.container.tags | any(. == "latest") ) .metadata.container.tags | join(",")')
+          if [[ -z "${UPSTREAM_TAGS}" ]]; then
+            echo "Failed to find upstream latest tags"
+            exit 1
+          fi
+          echo "Upstream tags: ${UPSTREAM_TAGS}"
+          TAGS_GH=$(echo ${UPSTREAM_TAGS} | sed "s|[^,]*|${BASE_TAG_GH}&|g")
+          TAGS_DOCKER=$(echo ${UPSTREAM_TAGS} | sed "s|[^,]*|${BASE_TAG_DOCKER}&|g")
+          echo "tags=${TAGS_GH},${TAGS_DOCKER}" >> ${GITHUB_OUTPUT}
+
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
@@ -63,7 +83,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/smokeping-speedtest:latest
-            ghcr.io/${{ github.repository_owner }}/smokeping-speedtest:latest
+            ${{ steps.create-tags.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache
