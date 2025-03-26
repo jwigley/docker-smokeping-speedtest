@@ -13,12 +13,14 @@ jobs:
       - name: Check Upstream
         id: check-upstream
         run: |
-          LAST_PUSHED=$(curl -s -X GET https://hub.docker.com/v2/repositories/linuxserver/smokeping/tags/latest | jq -r ".tag_last_pushed")
-          if [ $(date --date "${LAST_PUSHED}" +'%s') -ge $(date --date "1 days ago" +'%s') ]; then
-            echo "Upstream changed, building image"
-            echo "upstream=changed" >> ${GITHUB_OUTPUT}
+          LAST_PUSHED_TIMESTAMP=$(date --utc --date="$(curl -s https://hub.docker.com/v2/repositories/linuxserver/smokeping/tags/latest | jq -r '.tag_last_pushed' | sed 's/\.[0-9]*Z/Z/')" +'%s')
+          ONE_DAY_AGO=$(date --utc --date "1 day ago" +'%s')
+
+          if [ "$LAST_PUSHED_TIMESTAMP" -ge "$ONE_DAY_AGO" ]; then
+              echo "Upstream changed, building image"
+              echo "upstream=changed" >> "${GITHUB_OUTPUT}"
           else
-            echo "No upstream change, skipping"
+              echo "No upstream change, skipping"
           fi
 
       - name: Checkout
