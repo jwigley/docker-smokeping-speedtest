@@ -6,6 +6,9 @@ on:
   push:
     branches:
       - main
+  
+  # manually triggered
+  workflow_dispatch:
 
 jobs:
   docker:
