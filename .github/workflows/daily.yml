@@ -12,15 +12,30 @@ jobs:
     steps:
       - name: Check Upstream
         id: check-upstream
+        env:
+          UPSTREAM_VERSIONS_URL: "https://api.github.com/orgs/linuxserver/packages/container/smokeping/versions"
+          CURRENT_VERIONS_URL: "https://api.github.com/users/${{ github.repository_owner }}/packages/container/smokeping-speedtest/versions"
         run: |
-          LAST_PUSHED_TIMESTAMP=$(date --utc --date="$(curl -s https://hub.docker.com/v2/repositories/linuxserver/smokeping/tags/latest | jq -r '.tag_last_pushed' | sed 's/\.[0-9]*Z/Z/')" +'%s')
-          ONE_DAY_AGO=$(date --utc --date "1 day ago" +'%s')
+          get_latest_ls_version() {
+            jq -r '.[] | select(.metadata.container.tags | any(. == "latest")) | .metadata.container.tags[]' | \
+            grep -oP 'ls\K[0-9]+$' | sort -nr | head -n1
+          }
 
-          if [ "$LAST_PUSHED_TIMESTAMP" -ge "$ONE_DAY_AGO" ]; then
-              echo "Upstream changed, building image"
-              echo "upstream=changed" >> "${GITHUB_OUTPUT}"
+          UPSTREAM_VERSION=$(curl -s -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "${UPSTREAM_VERSIONS_URL}" | get_latest_ls_version)
+
+          CURRENT_VERSION=$(curl -s -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "${CURRENT_VERIONS_URL}" | get_latest_ls_version)
+
+          if (( ${UPSTREAM_VERSION} > ${CURRENT_VERSION} )); then
+            echo "Upstream changed, building image"
+            echo "upstream=changed" >> "${GITHUB_OUTPUT}"
           else
-              echo "No upstream change, skipping"
+            echo "No upstream change, skipping"
           fi
 
       - name: Checkout
