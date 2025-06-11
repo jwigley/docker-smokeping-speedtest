@@ -24,11 +24,13 @@ jobs:
           UPSTREAM_VERSION=$(curl -s -L \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "${UPSTREAM_VERSIONS_URL}" | get_latest_ls_version)
 
           CURRENT_VERSION=$(curl -s -L \
             -H "Accept: application/vnd.github+json" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "${CURRENT_VERIONS_URL}" | get_latest_ls_version)
 
           if (( ${UPSTREAM_VERSION} > ${CURRENT_VERSION} )); then
