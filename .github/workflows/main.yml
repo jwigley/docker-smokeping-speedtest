@@ -31,7 +31,7 @@ jobs:
 
       - name: Build Test
         id: docker_test
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./
@@ -80,7 +80,7 @@ jobs:
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./
           file: ./Dockerfile
