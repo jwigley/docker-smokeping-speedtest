@@ -4,7 +4,7 @@
 ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/jwigley/smokeping-speedtest/latest)
 [![Docker Pulls](https://img.shields.io/docker/pulls/jwigley/smokeping-speedtest.svg)](https://hub.docker.com/r/jwigley/smokeping-speedtest/)
 
-Smokeping docker image with [smokeping-speedtest](https://github.com/mad-ady/smokeping-speedtest) probe and [speedtest-cli](https://github.com/sivel/speedtest-cli), built upon linuxserver's [docker-smokeping](https://github.com/linuxserver/docker-smokeping) image.
+Smokeping docker image with [smokeping-speedtest](https://github.com/mad-ady/smokeping-speedtest) probe and [ookla's speedtest cli](https://www.speedtest.net/apps/cli), built upon linuxserver's [docker-smokeping](https://github.com/linuxserver/docker-smokeping) image.
 
 ## docker repositories
 
@@ -34,8 +34,6 @@ This can be modified by via the Probes and Targets config files as per the instr
 
 The default configuration runs speed tests with the official Ookla speedtest cli tool. The tool requires you to accept a license on first use. Alternatively you can add the `--accept-license` flag to the `extraargs` parameter in your Probes config.
 
-Smokeping-speedtest can also be configured to use [Sivel's speedtest-cli](https://github.com/sivel/speedtest-cli) tool. See the example config in your Targets config file. For best performance and reliable test results, it is recommended to use the official Ookla cli tool for testing internet speeds greater than 100Mbps.
-
 ## ssh probe
 
 This image also contains a working version of the [SSH Probe](https://oss.oetiker.ch/smokeping/probe/SSH.en.html), which is [currently broken](https://github.com/linuxserver/docker-smokeping/issues/142) in the underlying linuxserver image.
@@ -62,5 +60,5 @@ docker run \
 
 This docker image just pieces the bits together. The real work is all done by:
   - [mad-ady](https://github.com/mad-ady)'s [smokeping-speedtest](https://github.com/mad-ady/smokeping-speedtest)
-  - [sivel](https://github.com/sivel)'s [speedtest-cli](https://github.com/sivel/speedtest-cli)
+  - ooklas's [speedtest cli](https://www.speedtest.net/apps/cli)
   - [linuxserver](https://github.com/linuxserver)'s [docker-smokeping](https://github.com/linuxserver/docker-smokeping)
