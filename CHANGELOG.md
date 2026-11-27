@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-26
+### Removed
+- removed sivel [speedtest cli](https://github.com/sivel/speedtest-cli) which has been archived
+
 ## 2022-08-07
 ### Added
 - --secure arg to speedtest-cli ([@SuperJC710e](https://github.com/SuperJC710e))
